@@ -9,6 +9,21 @@
   </head>
   <body>
     <div class="js-app-1"></div>
-    <div class="js-app-2"></div>
-  </body>
+
+    <div id="app">
+      <h1>App</h1>
+      <button @click="onclick()">show alert</button>
+
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, sapiente magni temporibus voluptatem, suscipit id molestias ipsum laboriosam, perferendis saepe quos expedita ratione adipisci necessitatibus. Rem harum sequi dicta omnis.</p>
+
+      <my-component inline-template>
+        <div>
+          <h2>Inner inline comp</h2>
+          <div>Data - {{data}}</div>
+          <button @click="onclick()">show alert</button>
+        </div>
+      </my-component>
+
+      <file-component></file-component>
+    </div>
 </html>

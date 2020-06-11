@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Comp1 from './components/Comp1.vue'
-import Comp2 from './components/Comp2.vue'
 
 Vue.use(Vuex);
 Vue.config.productionTip = true
@@ -19,12 +18,31 @@ const store = new Vuex.Store({
 
 window.store = store;
 
-new Vue({
+const fileComponent = {
   store,
   render: h => h(Comp1)
-}).$mount('.js-app-1')
+}
+
+
+const myComponent = {
+  store,
+  methods: {
+    onclick() { alert('component alert') }
+  },
+  computed: {
+    data() {
+      return this.$store.state.data
+    }
+  }
+}
 
 new Vue({
-  store,
-  render: h => h(Comp2)
-}).$mount('.js-app-2')
+  el: '#app',
+  methods: {
+    onclick() { alert('app alert') }
+  },
+  components: {
+    'my-component': myComponent,
+    'file-component': fileComponent,
+  }
+});
