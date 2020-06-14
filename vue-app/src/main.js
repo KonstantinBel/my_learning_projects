@@ -1,26 +1,43 @@
 import Vue from 'vue'
-import app2 from './components/app-2.vue'
-import SingleFileWithProps from './components/single-file-with-props.vue';
+import VueRouter from 'vue-router'
 
-// Vue.config.productionTip = true
+Vue.config.productionTip = true
+Vue.use(VueRouter)
 
-// Глобальная регистрация компонентов
-Vue.component('single-file-with-props', SingleFileWithProps)
+Vue.component('go-back', {
+  template: `
+    <button @click='goBack'>Go back</button>
+  `,
+  methods: {
+    goBack() {
+      window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
+    },
+  },
+})
 
-Vue.component('inline-with-props', {
-  name: 'inline-with-props',
-  props: ['text'],
+const router1 = new VueRouter({
+  routes: [
+    { path: '/foo', component: { template: '<div>foo <go-back></go-back></div>' } },
+    { path: '/bar', component: { template: '<div>bar <go-back></go-back></div></div>' } },
+  ]
+})
+
+const router2 = new VueRouter({
+  routes: [
+    { path: '/foo', component: { template: '<div>foo <go-back></go-back></div>' } },
+    { path: '/bar', component: { template: '<div>bar <go-back></go-back></div></div>' } },
+  ]
 })
 
 // Инициализация компонента с шаблоном в html
 new Vue({
   el: '#app-1',
+  router: router1,
   data: {text: 'Hello from new Vue'},
 })
 
-
-// Инициализация однофайлового компонента
 new Vue({
   el: '#app-2',
-  render: h => h(app2),
+  router: router2,
+  data: {text: 'Hello from new Vue'},
 })

@@ -8,22 +8,33 @@
     <title>vue-app</title>
   </head>
   <body>
-    <!-- Компонент с шаблоном в html -->
     <div id="app-1">
-      <h1>Компонент с шаблоном в html</h1>
-      <p>Text from data - {{text}}</p>
-      <single-file-with-props :text='text'></single-file-with-props>
-      <inline-with-props inline-template :text='text'>
-        <div>
-          <h2>Инлайн компонент с пропсами</h2>
-          <p>Text from props - {{text}}</p>
-        </div>
-      </inline-with-props>
+      <h1>Первое приложение!</h1>
+      <p>
+        <!-- используем компонент router-link для навигации -->
+        <!-- входной параметр `to` определяет URL для перехода -->
+        <!-- `<router-link>` по умолчанию отображается тегом `<a>` -->
+        <router-link to="/foo">Перейти к Foo</router-link>
+        <router-link to="/bar">Перейти к Bar</router-link>
+      </p>
+      <!-- отображаем тут компонент, для которого совпадает маршрут -->
+      <hr>
+      <router-view></router-view>
       <hr>
     </div>
-
-    <!-- Однофайловый компонент -->
-    <div id="app-2"></div>
-
+    <div id="app-2">
+      <h1>Ещё одно приложение!</h1>
+      <p>
+        <!-- используем компонент router-link для навигации -->
+        <!-- входной параметр `to` определяет URL для перехода -->
+        <!-- `<router-link>` по умолчанию отображается тегом `<a>` -->
+        <router-link to="/foo">Перейти к Foo</router-link>
+        <router-link to="/bar">Перейти к Bar</router-link>
+      </p>
+      <!-- отображаем тут компонент, для которого совпадает маршрут -->
+      <hr>
+      <router-view></router-view>
+      <hr>
+    </div>
 
 </html>
