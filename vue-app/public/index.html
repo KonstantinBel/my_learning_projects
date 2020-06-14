@@ -8,22 +8,22 @@
     <title>vue-app</title>
   </head>
   <body>
-    <div class="js-app-1"></div>
-
-    <div id="app">
-      <h1>App</h1>
-      <button @click="onclick()">show alert</button>
-
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, sapiente magni temporibus voluptatem, suscipit id molestias ipsum laboriosam, perferendis saepe quos expedita ratione adipisci necessitatibus. Rem harum sequi dicta omnis.</p>
-
-      <my-component inline-template>
+    <!-- Компонент с шаблоном в html -->
+    <div id="app-1">
+      <h1>Компонент с шаблоном в html</h1>
+      <p>Text from data - {{text}}</p>
+      <single-file-with-props :text='text'></single-file-with-props>
+      <inline-with-props inline-template :text='text'>
         <div>
-          <h2>Inner inline comp</h2>
-          <div>Data - {{data}}</div>
-          <button @click="onclick()">show alert</button>
+          <h2>Инлайн компонент с пропсами</h2>
+          <p>Text from props - {{text}}</p>
         </div>
-      </my-component>
-
-      <file-component></file-component>
+      </inline-with-props>
+      <hr>
     </div>
+
+    <!-- Однофайловый компонент -->
+    <div id="app-2"></div>
+
+
 </html>
