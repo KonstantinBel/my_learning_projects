@@ -8,13 +8,11 @@ Vue.config.productionTip = true
 // лучше использовать класс vue-gnoms-menu-container (префикс vue- по аналогии с js-) и перебирать
 // результат вызова document.querrySelectorAll('.gnoms-menu-container').forEach(el => { new Vue({...}) })
 
-import GnomsSubMenu from './components/gnoms-sub-menu'
 import GnomsMenuItem from './components/gnoms-menu-item'
 
 new Vue({
   el: '#gnoms-menu-container',
   components: {
     'gnoms-munu-item': GnomsMenuItem,
-    'gnoms-sub-menu': GnomsSubMenu,
   }
 })

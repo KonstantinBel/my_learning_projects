@@ -6,7 +6,6 @@
 
 <script>
   export default {
-    name: 'gnoms-sub-menu',
     props: ['show', 'title'],
   }
 </script>

@@ -21,18 +21,15 @@
         gnoms-sub-menu - полноценный однофайловый компонент -->
 
         <gnoms-munu-item v-slot="vm">
-          <p @click="vm.self.onclick">Одежда</p>
-          <gnoms-sub-menu :show="vm.self.showSubMenu" title="Одежда"></gnoms-sub-menu>
+          <p @click="vm.onclick">Одежда</p>
         </gnoms-munu-item>
 
         <gnoms-munu-item v-slot="vm">
-          <p @click="vm.self.onclick">Авто</p>
-          <gnoms-sub-menu :show="vm.self.showSubMenu" title="Авто"></gnoms-sub-menu>
+          <p @click="vm.onclick">Авто</p>
         </gnoms-munu-item>
 
         <gnoms-munu-item v-slot="vm">
-          <p @click="vm.self.onclick">Здоровье</p>
-          <gnoms-sub-menu :show="vm.self.showSubMenu" title="Здоровье"></gnoms-sub-menu>
+          <p @click="vm.onclick">Здоровье</p>
         </gnoms-munu-item>
 
       </ul>

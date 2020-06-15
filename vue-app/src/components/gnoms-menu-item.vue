@@ -3,11 +3,14 @@
 
 <template>
   <li>
-    <slot :self="self"></slot>
+    <slot :onclick="onclick"></slot>
+    <gnoms-sub-menu :show="showSubMenu" title="Одежда"></gnoms-sub-menu>
   </li>
 </template>
 
 <script>
+  import GnomsSubMenu from './gnoms-sub-menu'
+
   export default {
     data: function() {
       return {
@@ -25,12 +28,15 @@
       // для этого нужно удать self и происать нужные в теге slot
       // На пример так: <slot :showSubMenu="showSubMenu"></slot>
       // И обращаться к нему так {{vm.showSubMenu}}
-      self: function() { return {...this} }
+      // self: function() { return {...this} }
     },
     methods: {
       onclick: function() {
         this.showSubMenu = !this.showSubMenu
       }
-    }
+    },
+    components: {
+      'gnoms-sub-menu': GnomsSubMenu,
+    },
   }
 </script>
