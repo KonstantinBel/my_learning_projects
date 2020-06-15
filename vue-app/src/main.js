@@ -1,36 +1,20 @@
+// Этот блок будет описан в пакедже common
 import Vue from 'vue'
-import SingleFileWithProps from './components/single-file-with-props.vue';
+Vue.config.productionTip = true
 
-// Vue.config.productionTip = true
+// Этот блок будет описан в отдельном файле и подключен в пакедж нужной вьюхи.
+// На одной странице можем быть несколько одинаковых не связанных между собой компонентов,
+// каждый из которых потребуется монтировать отдельно, в таком случае вместо id gnoms-menu-container
+// лучше использовать класс vue-gnoms-menu-container (префикс vue- по аналогии с js-) и перебирать
+// результат вызова document.querrySelectorAll('.gnoms-menu-container').forEach(el => { new Vue({...}) })
 
-// Глобальная регистрация компонентов
-Vue.component('single-file-with-props', SingleFileWithProps)
+import GnomsSubMenu from './components/gnoms-sub-menu'
+import GnomsMenuItem from './components/gnoms-menu-item'
 
-Vue.component('inline-with-props', {
-  name: 'inline-with-props',
-  props: ['text'],
-})
-
-// Инициализация компонента с шаблоном в html
 new Vue({
-  el: '#app-1',
-  data: function() { return {text: 'Text from HTML component'} },
-  methods: {
-    onclick: function() {
-      import('./components/app-2.vue')
-        .then(({default: App2}) => {
-          new Vue({
-            el: '#app-2',
-            render: h => h(App2),
-          })
-        })
-    }
+  el: '#gnoms-menu-container',
+  components: {
+    'gnoms-munu-item': GnomsMenuItem,
+    'gnoms-sub-menu': GnomsSubMenu,
   }
 })
-
-
-// // Инициализация однофайлового компонента
-// new Vue({
-//   el: '#app-2',
-//   render: h => h(app2),
-// })

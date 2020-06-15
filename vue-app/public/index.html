@@ -7,23 +7,36 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>vue-app</title>
   </head>
+
   <body>
-    <!-- Компонент с шаблоном в html -->
-    <div id="app-1" @click='onclick'>
-      <h1>Компонент с шаблоном в html</h1>
-      <p>Text from data - {{text}}</p>
-      <single-file-with-props :text='text'></single-file-with-props>
-      <inline-with-props inline-template :text='text'>
-        <div>
-          <h2>Инлайн компонент с пропсами</h2>
-          <p>Text from props - {{text}}</p>
-        </div>
-      </inline-with-props>
-      <hr>
+
+    <div id='gnoms-menu-container'>
+      <ul>
+        <!-- Теги <gnoms-munu-item> со всем содержимым будет отрисовываться в цикле erb
+        Содержимое <gnoms-munu-item> с названием меню будет на странице изначально.
+
+        gnoms-munu-item - однофайловый компонент со слотом, в слот будет помещен весь
+        контент который сейчас находится между тегами <gnoms-munu-item></gnoms-munu-item>
+
+        gnoms-sub-menu - полноценный однофайловый компонент -->
+
+        <gnoms-munu-item v-slot="vm">
+          <p @click="vm.self.onclick">Одежда</p>
+          <gnoms-sub-menu :show="vm.self.showSubMenu" title="Одежда"></gnoms-sub-menu>
+        </gnoms-munu-item>
+
+        <gnoms-munu-item v-slot="vm">
+          <p @click="vm.self.onclick">Авто</p>
+          <gnoms-sub-menu :show="vm.self.showSubMenu" title="Авто"></gnoms-sub-menu>
+        </gnoms-munu-item>
+
+        <gnoms-munu-item v-slot="vm">
+          <p @click="vm.self.onclick">Здоровье</p>
+          <gnoms-sub-menu :show="vm.self.showSubMenu" title="Здоровье"></gnoms-sub-menu>
+        </gnoms-munu-item>
+
+      </ul>
     </div>
 
-    <!-- Однофайловый компонент -->
-    <div id="app-2"></div>
-
-
+  </body>
 </html>
