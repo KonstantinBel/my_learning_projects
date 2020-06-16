@@ -1,11 +1,11 @@
 <template>
-  <b v-if="show">
+  <b>
     sub menu item - {{title}}
   </b>
 </template>
 
 <script>
   export default {
-    props: ['show', 'title'],
+    props: ['title'],
   }
 </script>

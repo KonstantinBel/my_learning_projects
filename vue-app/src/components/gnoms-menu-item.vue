@@ -4,17 +4,19 @@
 <template>
   <li>
     <slot :onclick="onclick"></slot>
-    <gnoms-sub-menu :show="showSubMenu" title="Одежда"></gnoms-sub-menu>
+    <component
+      title="Одежда"
+      v-bind:is="showSubMenu ? subMenuComponentName : null"
+    ></component>
   </li>
 </template>
 
 <script>
-  import GnomsSubMenu from './gnoms-sub-menu'
-
   export default {
     data: function() {
       return {
-        showSubMenu: false
+        showSubMenu: false,
+        subMenuComponentName: 'gnoms-sub-menu',
       }
     },
     computed: {
@@ -36,7 +38,10 @@
       }
     },
     components: {
-      'gnoms-sub-menu': GnomsSubMenu,
+      'gnoms-sub-menu': function(resolve) {
+        import('./gnoms-sub-menu')
+          .then(({ default: GnomsSubMenu }) => { resolve(GnomsSubMenu) })
+      },
     },
   }
 </script>
