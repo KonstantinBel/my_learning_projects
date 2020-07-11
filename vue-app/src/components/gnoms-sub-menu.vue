@@ -1,5 +1,5 @@
 <template>
-  <b>
+  <b class="item">
     sub menu item - {{title}}
   </b>
 </template>
@@ -9,3 +9,7 @@
     props: ['title'],
   }
 </script>
+
+<style>
+  .item { color: orange }
+</style>
