@@ -1,43 +1,18 @@
+// Этот блок будет описан в пакедже common
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-
 Vue.config.productionTip = true
-Vue.use(VueRouter)
 
-Vue.component('go-back', {
-  template: `
-    <button @click='goBack'>Go back</button>
-  `,
-  methods: {
-    goBack() {
-      window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
-    },
-  },
-})
+// Этот блок будет описан в отдельном файле и подключен в пакедж нужной вьюхи.
+// На одной странице можем быть несколько одинаковых не связанных между собой компонентов,
+// каждый из которых потребуется монтировать отдельно, в таком случае вместо id gnoms-menu-container
+// лучше использовать класс vue-gnoms-menu-container (префикс vue- по аналогии с js-) и перебирать
+// результат вызова document.querrySelectorAll('.gnoms-menu-container').forEach(el => { new Vue({...}) })
 
-const router1 = new VueRouter({
-  routes: [
-    { path: '/foo', component: { template: '<div>foo <go-back></go-back></div>' } },
-    { path: '/bar', component: { template: '<div>bar <go-back></go-back></div></div>' } },
-  ]
-})
-
-const router2 = new VueRouter({
-  routes: [
-    { path: '/foo', component: { template: '<div>foo <go-back></go-back></div>' } },
-    { path: '/bar', component: { template: '<div>bar <go-back></go-back></div></div>' } },
-  ]
-})
-
-// Инициализация компонента с шаблоном в html
-new Vue({
-  el: '#app-1',
-  router: router1,
-  data: {text: 'Hello from new Vue'},
-})
+import GnomsMenuItem from './components/gnoms-menu-item'
 
 new Vue({
-  el: '#app-2',
-  router: router2,
-  data: {text: 'Hello from new Vue'},
+  el: '#gnoms-menu-container',
+  components: {
+    'gnoms-munu-item': GnomsMenuItem,
+  }
 })

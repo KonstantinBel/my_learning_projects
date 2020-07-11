@@ -1,0 +1,20 @@
+version: "2.2"
+
+volumes:
+  micro-storage:
+
+services:
+  server:
+    build: server/
+    ports:
+      - "3000:3000"
+
+  reformer:
+    build: reformer/
+
+  logger:
+    build: logger/
+    ports:
+      - "4000:4000"
+    volumes:
+      - micro-storage:/user/app/volume

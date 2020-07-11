@@ -7,34 +7,36 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>vue-app</title>
   </head>
+
   <body>
-    <div id="app-1">
-      <h1>Первое приложение!</h1>
-      <p>
-        <!-- используем компонент router-link для навигации -->
-        <!-- входной параметр `to` определяет URL для перехода -->
-        <!-- `<router-link>` по умолчанию отображается тегом `<a>` -->
-        <router-link to="/foo">Перейти к Foo</router-link>
-        <router-link to="/bar">Перейти к Bar</router-link>
-      </p>
-      <!-- отображаем тут компонент, для которого совпадает маршрут -->
-      <hr>
-      <router-view></router-view>
-      <hr>
-    </div>
-    <div id="app-2">
-      <h1>Ещё одно приложение!</h1>
-      <p>
-        <!-- используем компонент router-link для навигации -->
-        <!-- входной параметр `to` определяет URL для перехода -->
-        <!-- `<router-link>` по умолчанию отображается тегом `<a>` -->
-        <router-link to="/foo">Перейти к Foo</router-link>
-        <router-link to="/bar">Перейти к Bar</router-link>
-      </p>
-      <!-- отображаем тут компонент, для которого совпадает маршрут -->
-      <hr>
-      <router-view></router-view>
-      <hr>
+
+    <div id='gnoms-menu-container'>
+      <div>fhdfghdfg</div>
+      wwwww
+      qqqq
+      <ul>
+        <!-- Теги <gnoms-munu-item> со всем содержимым будет отрисовываться в цикле erb
+        Содержимое <gnoms-munu-item> с названием меню будет на странице изначально.
+
+        gnoms-munu-item - однофайловый компонент со слотом, в слот будет помещен весь
+        контент который сейчас находится между тегами <gnoms-munu-item></gnoms-munu-item>
+
+        gnoms-sub-menu - полноценный однофайловый компонент -->
+
+        <gnoms-munu-item v-slot="vm">
+          <p @click="vm.onclick">Одежда</p>
+        </gnoms-munu-item>
+
+        <gnoms-munu-item v-slot="vm">
+          <p @click="vm.onclick">Авто</p>
+        </gnoms-munu-item>
+
+        <gnoms-munu-item v-slot="vm">
+          <p @click="vm.onclick">Здоровье</p>
+        </gnoms-munu-item>
+
+      </ul>
     </div>
 
+  </body>
 </html>
