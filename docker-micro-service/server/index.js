@@ -39,4 +39,4 @@ const listener = (request, response) => {
 server = http.createServer(listener)
 server.listen(PORT)
 
-console.log(`Server listen port - ${PORT}.\nSend "stop" to exit.`)
+console.log(`Server listen port - ${PORT}`)

@@ -5,16 +5,27 @@ volumes:
 
 services:
   server:
-    build: server/
+    image: "node:current"
+    working_dir: /home/node/app
+    volumes:
+      - "./server:/home/node/app"
     ports:
       - "3000:3000"
+    command: bash -c "npm i && npm start"
 
   reformer:
-    build: reformer/
+    image: "node:current"
+    working_dir: /home/node/app
+    volumes:
+      - "./reformer:/home/node/app"
+    command: bash -c "npm i && npm start"
 
   logger:
-    build: logger/
+    image: "node:current"
+    working_dir: /home/node/app
     ports:
       - "4000:4000"
     volumes:
-      - micro-storage:/user/app/volume
+      - "./logger:/home/node/app"
+      - "micro-storage:/home/node/volume"
+    command: bash -c "npm i && npm start"

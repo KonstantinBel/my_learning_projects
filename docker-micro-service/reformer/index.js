@@ -14,12 +14,10 @@ const listener = (request, response) => {
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/plain')
     response.end(body + ' ADDITIONAL INFO')
-
-    if (body === 'stop') server.close()
   })
 }
 
 server = http.createServer(listener)
 server.listen(PORT)
 
-console.log(`Server listen port - ${PORT}.\nSend "stop" to exit.`)
+console.log(`Reformer listen port - ${PORT}`)

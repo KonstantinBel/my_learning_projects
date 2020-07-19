@@ -1,6 +1,7 @@
 const http = require('http')
 const fs = require('fs')
 const PORT = 4000
+const LOGS_PATH = '/home/node/volume/log'
 let server
 
 const listener = (request, response) => {
@@ -8,14 +9,14 @@ const listener = (request, response) => {
 
   switch (method) {
     case 'GET':
-        fs.readFile('/user/app/volume/log', 'utf8', (err, data) => {
+        fs.readFile(LOGS_PATH, 'utf8', (err, data) => {
           if (err) { sendError(response, err) }
           else { sendData(response, data) }
         })
       break;
 
     case 'DELETE':
-        fs.writeFile('/user/app/volume/log', '', () => {})
+        fs.writeFile(LOGS_PATH, '', () => {})
         sendData(response, 'clear log')
       break;
 
@@ -24,9 +25,7 @@ const listener = (request, response) => {
         .then(data => {
           console.log(`body - "${data}"`)
           sendData(response, 'add entry')
-          fs.appendFile('/user/app/volume/log', `${(new Date).toLocaleString()} - ${data}\n`, () => {})
-
-          if (data === 'stop') server.close()
+          fs.appendFile(LOGS_PATH, `${(new Date).toLocaleString()} - ${data}\n`, () => {})
         })
         .catch(err => {
           console.error(err.stack)
@@ -68,4 +67,4 @@ function getRequestData(request) {
 server = http.createServer(listener)
 server.listen(PORT)
 
-console.log(`Server listen port - ${PORT}.\nSend "stop" to exit.`)
+console.log(`Logger listen port - ${PORT}`)
