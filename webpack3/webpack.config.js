@@ -1,5 +1,4 @@
 const webpack = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const path = require('path')
 
 module.exports = {
@@ -11,15 +10,9 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    library: 'VueCarousel',
+    libraryTarget: 'umd',
   },
-
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: 2,
-    }),
-    new CleanWebpackPlugin(),
-  ],
 
   module: {
     rules: [
